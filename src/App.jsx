@@ -6,11 +6,35 @@ import Header from "./Header";
 import Introduction from "./OS/Introduction";
 import ProcessManagement from "./OS/ProcessManagement";
 import CPUScheduling from "./OS/CPUScheduling";
+import CpuV from "./OS/CpuV";
+import ProcessSyn from "./OS/ProcessSyn";
+import ProcessSynV from "./OS/ProcessSynV";
+import MemoryManagement from "./OS/MemoryManagement";
+import FileSystemsGuide from "./OS/FileSystemsGuide";
+import AdvancedOSGuide from "./OS/AdvancedOSGuide";
+import OSWorkedExamples from "./OS/OSWorkedExamples";
+import StorageManagementGuide from "./OS/StorageManagementGuide";
+import IOSystemsGuide from "./OS/IOSystemsGuide";
+import OSArchitecture from "./OS/OSArchitecture";
 
+import OSInterviewGuide from "./OS/OSInterviewGuide";
 const topics = [
   { name: "Introduction", path: "/intro" },
   { name: "Process Management", path: "/processmanagment" },
   { name: "CPU Scheduling", path: "/cpuscheduling" },
+  { name: "CPU Scheduling Visualizer", path: "/cpuv" },
+   { name: "Synchronization & Deadlocks", path: "/syn" },
+   { name: "Synchronization & Deadlocks Visualizer ", path: "/synv" },
+   { name: "File Systems", path: "/fs" },
+   { name: "Storage Management", path: "/sm" },
+   { name: "I/O Systems", path: "/ios" },
+  
+   { name: "OS Worked Examples", path: "/osw" },
+   { name: "Advanced OS", path: "/Aos" },
+   { name: "OS Architecture", path: "/aaos" },
+   {/*{ name: "OS Interview", path: "/os_In" },*/}
+
+
  
 ];
 
@@ -113,7 +137,21 @@ const App = () => {
           <Routes>
             <Route path="/intro" element={<Introduction />} />
             <Route path="/processmanagment" element={<ProcessManagement />} />
-              <Route path="/cpuscheduling" element={<CPUScheduling />} />
+            <Route path="/cpuscheduling" element={<CPUScheduling />} />
+            <Route path="/cpuv" element={<CpuV />} />
+            <Route path="/syn" element={<ProcessSyn/>} />
+            <Route path="/synv" element={<ProcessSynV/>} />
+            <Route path="/mm" element={<MemoryManagement/>} />
+             <Route path="/fs" element={<FileSystemsGuide/>} />
+            <Route path="/ios" element={<IOSystemsGuide/>} /> 
+            <Route path="/sm" element={<StorageManagementGuide/>} />
+            <Route path="/osw" element={<OSWorkedExamples/>} />
+            <Route path="/Aos" element={<AdvancedOSGuide/>} />
+            <Route path="/aaos" element={<OSArchitecture/>} />
+              {/* <Route path="/os_in" element={<OSInterviewGuide/>} />*/}
+            
+        
+
             
             
             <Route

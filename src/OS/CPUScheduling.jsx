@@ -3,13 +3,13 @@ import React from "react";
 export default function CPUScheduling() {
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-8">
-      <h1 className="text-3xl font-extrabold mb-6 text-center"> CPU Scheduling Algorithms</h1>
+      <h1 className="text-3xl font-extrabold mb-6 text-center">CPU Scheduling Algorithms</h1>
 
       {/* A. Scheduling Criteria */}
       <section className="space-y-3">
         <h2 className="text-2xl font-bold">A. Scheduling Criteria</h2>
         <ul className="list-disc list-inside space-y-1">
-          <li><strong>CPU Utilization:</strong> Keep CPU busy; aim  90%.</li>
+          <li><strong>CPU Utilization:</strong> Keep CPU busy; aim for 90%.</li>
           <li><strong>Throughput:</strong> Number of processes completed per unit time.</li>
           <li><strong>Turnaround Time (TAT):</strong> Total time from arrival to completion.
             <pre className="bg-gray-100 p-2 rounded font-mono">TAT = Completion Time − Arrival Time</pre>
@@ -23,85 +23,147 @@ export default function CPUScheduling() {
       </section>
 
       {/* B. Scheduling Algorithms */}
-      <section className="space-y-4">
+      <section className="space-y-6">
         <h2 className="text-2xl font-bold">B. Scheduling Algorithms</h2>
 
         {/* FCFS */}
-        <div className="space-y-2">
+        <div className="space-y-2 p-4 border rounded-lg bg-blue-50">
           <h3 className="text-xl font-semibold">1. FCFS (First Come First Serve)</h3>
-          <p>Concept: Run processes in the order they arrive. Type: Non-preemptive.</p>
-          <p>Advantages: Simple; easy to implement.</p>
-          <p>Disadvantages: Poor for short jobs if a long job comes first (convoy effect).</p>
-          <p><strong>Example:</strong></p>
-          <table className="w-full border border-gray-300 text-left">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="border p-2">Process</th>
-                <th className="border p-2">Burst Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["P1", "5"],
-                ["P2", "3"],
-                ["P3", "8"]
-              ].map(([p, bt], i) => (
-                <tr key={i} className="odd:bg-white even:bg-gray-50">
-                  <td className="border p-2 font-medium">{p}</td>
-                  <td className="border p-2">{bt}</td>
+          <p><strong>Concept:</strong> Run processes in the order they arrive. Like a cafeteria line.</p>
+          <p><strong>Type:</strong> Non-preemptive</p>
+          <p><strong>Advantages:</strong> Simple; easy to implement</p>
+          <p><strong>Disadvantages:</strong> Poor for short jobs if long job comes first (convoy effect)</p>
+          <div className="mt-3">
+            <p><strong>Example:</strong></p>
+            <table className="w-1/2 border border-gray-300 text-left">
+              <thead className="bg-gray-200">
+                <tr>
+                  <th className="border p-2">Process</th>
+                  <th className="border p-2">Burst Time</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <p>Execution Order: P1 → P2 → P3</p>
+              </thead>
+              <tbody>
+                {[
+                  ["P1", "5"],
+                  ["P2", "3"],
+                  ["P3", "8"]
+                ].map(([p, bt], i) => (
+                  <tr key={i} className="odd:bg-white even:bg-gray-50">
+                    <td className="border p-2 font-medium">{p}</td>
+                    <td className="border p-2">{bt}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="mt-2"><strong>Execution Order:</strong> P1 → P2 → P3</p>
+            <p><strong>Average Waiting Time:</strong> (0 + 5 + 8)/3 = 4.33 ms</p>
+          </div>
         </div>
 
         {/* SJF */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-green-50">
           <h3 className="text-xl font-semibold">2. SJF (Shortest Job First)</h3>
-          <p>Pick the process with the shortest CPU burst next. Non-preemptive version.</p>
-          <p>Advantages: Minimizes average waiting time.</p>
-          <p>Disadvantages: Requires burst knowledge; long jobs may starve.</p>
+          <p><strong>Concept:</strong> Pick the process with shortest CPU burst next</p>
+          <p><strong>Type:</strong> Non-preemptive version</p>
+          <p><strong>Advantages:</strong> Minimizes average waiting time</p>
+          <p><strong>Disadvantages:</strong> Requires burst knowledge; long jobs may starve</p>
+          <div className="mt-3">
+            <p><strong>Example (Same processes):</strong></p>
+            <p><strong>Execution Order:</strong> P2(3) → P1(5) → P3(8)</p>
+            <p><strong>Average Waiting Time:</strong> (3 + 0 + 8)/3 = 3.67 ms</p>
+          </div>
         </div>
 
         {/* SRTF */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-purple-50">
           <h3 className="text-xl font-semibold">3. SRTF (Shortest Remaining Time First)</h3>
-          <p>Preemptive version of SJF. New shorter process can interrupt running process.</p>
-          <p>Advantages: Better turnaround than FCFS.</p>
-          <p>Disadvantages: More context switches; potential starvation.</p>
+          <p><strong>Concept:</strong> Preemptive version of SJF. New shorter process can interrupt running process</p>
+          <p><strong>Type:</strong> Preemptive</p>
+          <p><strong>Advantages:</strong> Better response time than SJF</p>
+          <p><strong>Disadvantages:</strong> More context switches; potential starvation</p>
+          <div className="mt-3">
+            <p><strong>How it works:</strong> Always run the job closest to completion</p>
+          </div>
         </div>
 
         {/* Priority Scheduling */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-yellow-50">
           <h3 className="text-xl font-semibold">4. Priority Scheduling</h3>
-          <p>Process with highest priority runs first.</p>
-          <ul className="list-disc list-inside">
-            <li>Non-preemptive: Current process continues until completion.</li>
-            <li>Preemptive: Higher-priority process can interrupt running one.</li>
+          <p><strong>Concept:</strong> Process with highest priority runs first (1 = highest)</p>
+          <ul className="list-disc list-inside ml-4">
+            <li><strong>Non-preemptive:</strong> Current process continues until completion</li>
+            <li><strong>Preemptive:</strong> Higher-priority process can interrupt running one</li>
           </ul>
-          <p>Disadvantages: Low-priority processes may starve (aging can solve this).</p>
+          <p><strong>Disadvantages:</strong> Low-priority processes may starve</p>
+          <p><strong>Solution:</strong> Aging - gradually increase priority of waiting processes</p>
+          <div className="mt-3">
+            <p><strong>Example:</strong></p>
+            <table className="w-2/3 border border-gray-300 text-left">
+              <thead className="bg-gray-200">
+                <tr>
+                  <th className="border p-2">Process</th>
+                  <th className="border p-2">Burst Time</th>
+                  <th className="border p-2">Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["P1", "10", "3"],
+                  ["P2", "1", "1"],
+                  ["P3", "2", "4"],
+                  ["P4", "1", "5"],
+                  ["P5", "5", "2"]
+                ].map(([p, bt, pr], i) => (
+                  <tr key={i} className="odd:bg-white even:bg-gray-50">
+                    <td className="border p-2 font-medium">{p}</td>
+                    <td className="border p-2">{bt}</td>
+                    <td className="border p-2">{pr}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="mt-2"><strong>Execution Order:</strong> P2(1) → P5(5) → P1(10) → P3(2) → P4(1)</p>
+          </div>
         </div>
 
         {/* Round Robin */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-red-50">
           <h3 className="text-xl font-semibold">5. Round Robin (RR)</h3>
-          <p>Each process gets a fixed time slice (quantum); if unfinished, goes back to the queue.</p>
-          <p>Type: Preemptive. Advantages: Fair, good for time-sharing. Disadvantages: Context switch overhead.</p>
+          <p><strong>Concept:</strong> Each process gets fixed time slice (quantum); if unfinished, goes back to queue</p>
+          <p><strong>Type:</strong> Preemptive</p>
+          <p><strong>Advantages:</strong> Fair, good for time-sharing systems</p>
+          <p><strong>Disadvantages:</strong> Context switch overhead; performance depends on quantum size</p>
+          <div className="mt-3">
+            <p><strong>Example:</strong> Processes P1(5), P2(3), P3(8) with quantum = 4 ms</p>
+            <p><strong>Execution:</strong> P1(4) → P2(3) → P3(4) → P1(1) → P3(4)</p>
+            <p><strong>Key Point:</strong> No process waits more than (n-1) × quantum time units</p>
+          </div>
         </div>
 
         {/* Multilevel Queue */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-indigo-50">
           <h3 className="text-xl font-semibold">6. Multilevel Queue Scheduling</h3>
-          <p>Multiple queues based on process type (system, interactive, batch); each queue has its own scheduling algorithm.</p>
-          <p>Disadvantages: Inflexible; processes cannot move between queues.</p>
+          <p><strong>Concept:</strong> Multiple queues based on process type</p>
+          <div className="ml-4">
+            <p><strong>• System Processes:</strong> Highest priority, Round Robin</p>
+            <p><strong>• Interactive Processes:</strong> Medium priority, Round Robin</p>
+            <p><strong>• Batch Processes:</strong> Lowest priority, FCFS</p>
+          </div>
+          <p><strong>Disadvantages:</strong> Inflexible; processes cannot move between queues</p>
         </div>
 
         {/* Multilevel Feedback Queue */}
-        <div>
+        <div className="space-y-2 p-4 border rounded-lg bg-pink-50">
           <h3 className="text-xl font-semibold">7. Multilevel Feedback Queue Scheduling</h3>
-          <p>Like multilevel queue, but processes can move between queues based on behavior.</p>
-          <p>Advantages: Dynamic, reduces starvation. Disadvantages: Complex to implement.</p>
+          <p><strong>Concept:</strong> Like multilevel queue, but processes can move between queues</p>
+          <p><strong>How it works:</strong></p>
+          <ul className="list-disc list-inside ml-4">
+            <li>If process uses full time slice → CPU-bound → Move DOWN to lower priority</li>
+            <li>If process blocks for I/O → Interactive → Move UP to higher priority</li>
+          </ul>
+          <p><strong>Advantages:</strong> Dynamic, reduces starvation, adapts to process behavior</p>
+          <p><strong>Disadvantages:</strong> Complex to implement</p>
+          <p><strong>Used in:</strong> Windows, Linux, macOS</p>
         </div>
       </section>
 
@@ -120,13 +182,13 @@ export default function CPUScheduling() {
           </thead>
           <tbody>
             {[
-              ["FCFS", "Simple", "No", "Easy", "Convoy effect, poor average WT"],
-              ["SJF", "Optimal (for TAT)", "Optional", "Minimizes WT", "Needs burst knowledge, may starve"],
-              ["SRTF", "Optimal", "Yes", "Minimizes TAT better", "Starvation, frequent context switch"],
-              ["Priority", "Flexible", "Optional", "Prioritizes important tasks", "Starvation possible"],
-              ["RR", "Fair", "Yes", "Good for time-sharing", "Overhead, quantum tuning"],
-              ["Multilevel Queue", "Structured", "Depends", "Classifies processes", "Inflexible"],
-              ["Multilevel Feedback Queue", "Adaptive", "Yes", "Dynamic, reduces starvation", "Complex"]
+              ["FCFS", "Simple", "No", "Easy, fair", "Convoy effect, poor WT"],
+              ["SJF", "Optimal WT", "Optional", "Minimizes waiting time", "Needs burst knowledge"],
+              ["SRTF", "Optimal TAT", "Yes", "Best turnaround time", "Starvation, overhead"],
+              ["Priority", "Flexible", "Optional", "Important tasks first", "Starvation possible"],
+              ["RR", "Fair", "Yes", "Good response time", "Quantum tuning critical"],
+              ["Multilevel Queue", "Structured", "Depends", "Process classification", "Inflexible"],
+              ["Multilevel Feedback", "Adaptive", "Yes", "Self-optimizing, fair", "Complex implementation"]
             ].map(([algo, type, preemptive, adv, disadv], i) => (
               <tr key={i} className="odd:bg-white even:bg-gray-50">
                 <td className="border p-2 font-medium">{algo}</td>
@@ -141,12 +203,14 @@ export default function CPUScheduling() {
       </section>
 
       {/* Key Takeaways */}
-      <section className="space-y-2">
-        <h2 className="text-2xl font-bold"> Key Takeaways</h2>
+      <section className="space-y-2 p-4 border rounded-lg bg-gray-100">
+        <h2 className="text-2xl font-bold">Key Takeaways</h2>
         <ul className="list-disc list-inside space-y-1">
-          <li>Preemptive scheduling can interrupt running processes; non-preemptive cannot.</li>
-          <li>Trade-offs exist between CPU utilization, turnaround time, waiting time, and fairness.</li>
-          <li>Multilevel feedback queue is one of the most efficient algorithms for general-purpose OS.</li>
+          <li><strong>Preemptive</strong> scheduling can interrupt running processes; <strong>non-preemptive</strong> cannot</li>
+          <li><strong>SJF</strong> gives minimum average waiting time but needs future knowledge</li>
+          <li><strong>Round Robin</strong> provides fairness and good response time for interactive systems</li>
+          <li><strong>Multilevel Feedback Queue</strong> is most sophisticated and used in modern OS</li>
+          <li>All algorithms involve <strong>trade-offs</strong> between CPU utilization, turnaround time, waiting time, and fairness</li>
         </ul>
       </section>
     </div>

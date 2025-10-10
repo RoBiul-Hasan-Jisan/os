@@ -39,6 +39,119 @@ const Sidebar = () => {
         >
          CPU Scheduling
         </NavLink>
+
+          <NavLink
+          to="/os/cpuv"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         CPU Scheduling Visualizer
+        </NavLink>
+                  <NavLink
+          to="/os/syn"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         Synchronization & Deadlocks
+        </NavLink>
+                    <NavLink
+          to="/os/synv"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         Synchronization & Deadlocks V
+        </NavLink>
+                      <NavLink
+          to="/os/mm"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+          MemoryManagement
+        </NavLink>
+
+          <NavLink
+          to="/os/fs"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         File Ststem
+        
+        </NavLink>
+
+        
+          <NavLink
+          to="/os/osw"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         Bonus
+        
+        </NavLink>
+          <NavLink
+          to="/os/Aos"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         Topics
+        
+        </NavLink>
+          <NavLink
+          to="/os/sm"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+        Storage and Secondary Memory Management
+        
+        </NavLink>
+          <NavLink
+          to="/os/ios"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+         I/O Systems
+        
+        </NavLink>
+            <NavLink
+          to="/os/aaos"
+          className={({ isActive }) =>
+            `block py-2 px-3 rounded hover:bg-gray-300 ${
+              isActive ? "bg-blue-400 text-white" : ""
+            }`
+          }
+        >
+      OS Architecture
+        
+        </NavLink>
+
+
+        
     
         <hr className="my-4" />
 
